@@ -79,70 +79,58 @@ class calculatorBrain{
     
     var discription: String{
         get{
-            var dis = ""
-            for(var index = 0; index < currentDiscription.count; index++){
-                if(index != 0){
-                    dis += currentDiscription[index]
-                }
-            }
-            return dis
-                //Int in currentDiscription{
-                //dis += currentDiscription[index]
-            
+            return "\(currentDiscription)" + " ="
         }
-            //plan: make another evaluate function add strings forward separated by a comma, an operation will replace the comma backwards
-            //parenthesese????
-        
     }
 
     private func updateDiscription(op: Op){
         switch op{
         case .Operand(let operand):
-            currentDiscription.append(", ")
             currentDiscription.append("\(operand)")
         case .Variable(let operand):
-            currentDiscription.append(", ")
             currentDiscription.append("\(operand)")
         case .UnaryOperation(let symbol, _):
-            let index = findLastComma() + 1
-            currentDiscription.insert(symbol, atIndex: index)
-            currentDiscription.insert("(", atIndex: index+1)
-            currentDiscription.append(")")
+            if (currentDiscription.count > 0){
+                currentDiscription.append(symbol + "(" + currentDiscription.removeLast() + ")")
+            }
         case .BinaryOperation(let symbol, _):
-            let index = findLastComma()
-            if(symbol == "*" || symbol == "/"){
-                let needsP = checkP(index)
-            }else{
-                currentDiscription.replaceRange(index...index, with: [" " + symbol + " "])
+            if (currentDiscription.count >= 2){
+                if(symbol == "*" || symbol == "/"){
+                    //checks if the stuff in front will need a parentheses)
+                    if checkP(currentDiscription.count - 1){
+                        currentDiscription.append("(" + currentDiscription.removeLast() + ")")
+                    }
+                    //checks if the stuff behind will need a parentheses)
+                    if checkP(currentDiscription.count - 2){
+                        currentDiscription.insert("(" + currentDiscription.removeAtIndex(currentDiscription.count - 2) + ")", atIndex: currentDiscription.count - 1)
+                    }
+                }
+                currentDiscription.append(currentDiscription.removeAtIndex(currentDiscription.count-2) + symbol + currentDiscription.removeLast())
             }
         }
     }
+  
+    
+    //logic behind this method: if it enters a parentheses, the other stuff doesn't matter so we basically will ignore them. If it sees a +, it will need the parentheses, if it sees a *, it will surely not need the parentheses because a parentheses shouldv been added already if it were needed. hopefully this is true! jajaja
 
-    //ONLY USE COMMAS FOR PRINTING
-    //USE EACH SPOT IN THE ARRAY AS A COMPLETED EXPRESSION
-    
-    
-    //logic behind this method: if it enters a parentheses, the other stuff doesn't matter so we basically will ignore them. If it sees a +, it will need the parentheses, if it sees a *, it will surely not need the parentheses. hopefully this is true! jajaja
-    //THIS METHOD DOESNT CHECK IF THE PREVIOUS SET OF NUMBERS IS NOT ORGANIZED YET
-    // 3 + 4, 5 ... if they hit * we get fuckarinoed
-    
     private func checkP(var index: Int) -> Bool{
-        //checks if we have a + / -  after to need a parentheses
+        var theString = currentDiscription[index]
         var needsP = false
         var inParentheses = 0
         //+1 for open, -1 cor closed, only account for checkP if its 0
-        for(index; index < currentDiscription.count; index++){
-            if(currentDiscription[index] == "("){
+        for character in theString {
+            if(character == "("){
                 inParentheses++
-            }else if(currentDiscription[index] == ")"){
+            }else if(character == ")"){
                 inParentheses--
-            }else if( (currentDiscription[index] == "+" || currentDiscription[index] == "-") && inParentheses <= 0){
+            }else if( (character == "+" || character == "-") && inParentheses <= 0){
                 needsP = true
                 break
-            }else if( (currentDiscription[index] == "*" || currentDiscription[index] == "/") && inParentheses <= 0){
+            }else if( (character == "*" || character == "/") && inParentheses <= 0){
                 break
             }
         }
+        
         return needsP
     }
     
