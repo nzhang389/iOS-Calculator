@@ -80,7 +80,7 @@ class calculatorBrain{
     
     var discription: String{
         get{
-            return "\(currentDiscription)" + " ="
+            return "\(currentDiscription)" + " = "
         }
     }
 

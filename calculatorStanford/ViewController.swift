@@ -13,7 +13,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var display: UILabel!
     
     
-    @IBOutlet weak var descriptionUILabel: UILabel!
     
     var start = true
     var decimal = false
@@ -26,7 +25,7 @@ class ViewController: UIViewController {
         let digit = sender.currentTitle!
         if(start) {
             decimal = false
-            display.text = "0"
+            display.text = brain.discription + "0"
         }
         if(digit == "."){
             if(decimal){}
@@ -38,7 +37,7 @@ class ViewController: UIViewController {
         }
         else{
             if(start){
-                display.text = digit
+                display.text = brain.discription + digit
                 start = false
             }
             else{
@@ -63,7 +62,6 @@ class ViewController: UIViewController {
         start = true
         displayNum = 0
         firstNum = true
-        descriptionUILabel.text = "0"
     }
     
     @IBAction func operate(sender: UIButton) {
@@ -72,23 +70,24 @@ class ViewController: UIViewController {
         }
         let operation = sender.currentTitle!
         displayNum = brain.performOperation(operation)
-        descriptionUILabel.text = brain.discription
     }
     
 
     @IBAction func enter() {
         start = true
         displayNum = brain.pushOperand(displayNum!)
-        descriptionUILabel.text = brain.discription
     }
     
     var displayNum: Double? {
         get{
-            return NSNumberFormatter().numberFromString(display.text!)!.doubleValue
+            let currentD = display.text!
+            let myStringArr = currentD.componentsSeparatedByString("=")
+            let inputNum = myStringArr[1]
+            return NSNumberFormatter().numberFromString(inputNum)!.doubleValue
         }
         set{
             if let valid = newValue{
-                display.text = "\(newValue!)"
+                display.text = brain.discription + "\(newValue!)"
             }else{
                 clear()//automatically resets calculator if an error is seen
                 display.text = "ERROR"

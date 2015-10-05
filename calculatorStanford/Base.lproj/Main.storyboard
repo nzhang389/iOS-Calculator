@@ -227,6 +227,26 @@
                                     <action selector="appendSymbol:" destination="BYZ-38-t0r" eventType="touchUpInside" id="r3A-ea-t50"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yIf-hc-UMF">
+                                <rect key="frame" x="136" y="495" width="104" height="97"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <state key="normal" title="→M">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="appendSymbol:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P2U-G1-pRW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ADH-hA-hv8">
+                                <rect key="frame" x="248" y="495" width="104" height="97"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <state key="normal" title="M">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="appendSymbol:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DSc-Vq-Kkp"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Gf-81-3Nz">
                                 <rect key="frame" x="360" y="74" width="104" height="97"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
@@ -237,12 +257,6 @@
                                     <action selector="operate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yyK-rD-3jo"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="57f-W1-tGL">
-                                <rect key="frame" x="498" y="27" width="17.5" height="38.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0v-cI-Kx1">
                                 <rect key="frame" x="16" y="27" width="568" height="38.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
@@ -265,7 +279,6 @@
                             <constraint firstItem="LtL-mS-r3w" firstAttribute="leading" secondItem="RI2-be-f4u" secondAttribute="trailing" constant="8" id="6CJ-uM-uxe"/>
                             <constraint firstItem="xZu-6A-wKj" firstAttribute="top" secondItem="i9g-xu-uAf" secondAttribute="bottom" constant="8" id="6xW-mS-TR3"/>
                             <constraint firstItem="8PH-am-frF" firstAttribute="height" secondItem="DFz-EI-4we" secondAttribute="height" id="704-qP-aZl"/>
-                            <constraint firstItem="57f-W1-tGL" firstAttribute="leading" secondItem="N0v-cI-Kx1" secondAttribute="trailing" constant="-86" id="7DB-mI-qDX"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="1cj-sF-TGY" secondAttribute="bottom" constant="8" id="979-SG-aWH"/>
                             <constraint firstItem="8PH-am-frF" firstAttribute="width" secondItem="tuA-iE-Nhs" secondAttribute="width" id="9Ph-43-2Lq"/>
                             <constraint firstItem="qhP-Ii-sp1" firstAttribute="leading" secondItem="n8M-xg-Nfd" secondAttribute="trailing" constant="8" id="BTj-Cp-ZoG"/>
@@ -337,7 +350,6 @@
                             <constraint firstItem="8PH-am-frF" firstAttribute="width" secondItem="RI2-be-f4u" secondAttribute="width" id="pCb-z1-pez"/>
                             <constraint firstItem="9jy-oK-zfg" firstAttribute="leading" secondItem="qhP-Ii-sp1" secondAttribute="trailing" constant="8" id="pcu-bp-lKC"/>
                             <constraint firstItem="8PH-am-frF" firstAttribute="width" secondItem="1cj-sF-TGY" secondAttribute="width" id="rGJ-Jk-RVa"/>
-                            <constraint firstItem="57f-W1-tGL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="7" id="rtL-L4-cDv"/>
                             <constraint firstItem="i9g-xu-uAf" firstAttribute="leading" secondItem="mau-IW-brS" secondAttribute="trailing" constant="8" id="s56-25-pql"/>
                             <constraint firstItem="7cc-35-J6C" firstAttribute="top" secondItem="9jy-oK-zfg" secondAttribute="bottom" constant="8" id="tHf-Ai-jFX"/>
                             <constraint firstItem="8PH-am-frF" firstAttribute="width" secondItem="meP-sC-HnL" secondAttribute="width" id="uW9-3M-eXp"/>
@@ -353,7 +365,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="descriptionUILabel" destination="57f-W1-tGL" id="wBQ-pT-ROk"/>
                         <outlet property="display" destination="N0v-cI-Kx1" id="YLh-U1-18p"/>
                     </connections>
                 </viewController>
